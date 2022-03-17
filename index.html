@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, inital-scale=1.0" />
         <title>Coding Quiz</title>
         <link rel="stylesheet" href="./assets/css/style.css" />
-        <script src="script.js" defer></script>
     </head>
     <body>
         <div class="quiz-1" id="quiz">
@@ -13,23 +12,45 @@
                 <h2 id="question">Question text</h2>
                 <ul>
                     <li>
-                        <input type="text" id="a" name="answer" class="answer" />
+                        <input
+                            type="radio"
+                            id="a"
+                            name="answer"
+                            class="answer"
+                        />
                         <label id="a_text" for="a">Question</label>
                     </li>
                     <li>
-                        <input type="text" id="b" name="answer" class="answer" />
+                        <input
+                            type="radio"
+                            id="b"
+                            name="answer"
+                            class="answer"
+                        />
                         <label id="b_text" for="b">Question</label>
                     </li>
-                    <li><input type="text" id="c" name="answer" class="answer" />
+                    <li>
+                        <input
+                            type="radio"
+                            id="c"
+                            name="answer"
+                            class="answer"
+                        />
                         <label id="c_text" for="c">Question</label>
                     </li>
                     <li>
-                        <input type="text" id="d" name="answer" class="answer" />
+                        <input
+                            type="radio"
+                            id="d"
+                            name="answer"
+                            class="answer"
+                        />
                         <label id="d_text" for="d">Question</label>
                     </li>
                 </ul>
             </div>
             <button id="submit">Submit</button>
         </div>
+        <script src="/assets/js/script.js"></script>
     </body>
 </html>
