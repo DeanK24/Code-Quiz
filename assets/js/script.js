@@ -37,7 +37,7 @@ const quizData = [
   },
   {
     question:
-      "Which oone of the following also known as Conditional Expression?",
+      "Which of the following also known as Conditional Expression?",
     a: "1. Alternative to if-else",
     b: "2. Switch statement",
     c: "3. If-then-else statement",
@@ -50,21 +50,39 @@ const quizData = [
 
 var quiz = document.getElementById("quiz");
 var answerEls = document.querySelectorAll(".answer");
-var questionEl = document.getElementById("question");
-var a_text = document.getElementById("a_text");
-var b_text = document.getElementById("b_text");
-var c_text = document.getElementById("c_text");
-var d_text = document.getElementById("d_text");
+var questionEl = document.getElementById("questions");
+var a_text = document.getElementById("a");
+var b_text = document.getElementById("b");
+var c_text = document.getElementById("c");
+var d_text = document.getElementById("d");
 var submitBtn = document.getElementById("submit");
 var startBtn = document.getElementById("start");
 var startPage = document.getElementById('start-page');
-var highscore = document.getElementById("view_highscore_link");
+var highscore = document.getElementsByClassName("highscore")[0];
+var selected = false;
+var selectedAnswer = "";
+var initials = document.getElementById('initials');
+var submitScoreBtn = document.getElementsByClassName('submit');
+
 
 var currentQuestionindex = 0;
 
+function highScore () {
+  highscore.classList.remove('hide');
+  quiz.classList.add('hide');
+  document.querySelector(".h2highscore").innerHTML = "Your highscore is " + timerCount + `&nbsp;&nbsp;&nbsp;&nbsp;<input placeholder="Initials here" type="text" name="highscore" id="initials">`;
+}
+
+function handleInitials() {
+  initials = document.getElementById('initials');
+  console.log(initials.value);
+}
+
+
+
+
 // timer
 let score = 0;
-let answers
 var timerCount = 75;
 var time = document.getElementById("time");
 
@@ -74,8 +92,9 @@ function startTimer() {
   var timerDisplay = setInterval(function () {
     time.innerHTML = timerCount;
     timerCount = timerCount - 1;
-    if (timerCount < 0) {
+    if (timerCount < 0 || !highscore.classList.contains('hide')) {
       clearInterval(timerDisplay);
+      // highScore()
     }
   }, 1000);
 }
@@ -93,27 +112,61 @@ function startQuiz() {
     startTimer();
 }
 
+submitScoreBtn.addEventListener("click", function saveScores() {
+  if (initials.value === "") {
+    alert("Initials cannot be blank!");
+    return false;
+  } else {
+    var savedScores = JSON.parse(localStorage.getItem("savedScores")) || [];
+    var currentPlayer = initials.value.trim();
+    var currentHighscore = {
+      name : currentPlayer,
+      score : score
+    };
+
+  }
+});
+
 function loadQuiz() {
     var currentQuestion = quizData[currentQuestionindex];
-    // questionEl.innerText = "<p>" + currentQuestion.question + "</p>";
-    a_text.innerHTML = currentQuestion.a;
-    b_text.innerHTML = currentQuestion.b;
-    c_text.innerHTML = currentQuestion.c;
-    d_text.innerHTML = currentQuestion.d;
-
+    questionEl.textContent = currentQuestion.question;
+    a_text.textContent = currentQuestion.a;
+    b_text.textContent = currentQuestion.b;
+    c_text.textContent = currentQuestion.c;
+    d_text.textContent = currentQuestion.d;
+    a_text.addEventListener("click", function () {
+      selectedAnswer = a_text.dataset.answer;
+    })
+    b_text.addEventListener("click", function () {
+      selectedAnswer = b_text.dataset.answer;
+    })
+    c_text.addEventListener("click", function () {
+      selectedAnswer = c_text.dataset.answer;
+    })
+    d_text.addEventListener("click", function () {
+      selectedAnswer = d_text.dataset.answer;
+    })
 };
 
+function answers() {
+  selected = true;
+}
+
+function nextQuestion() {
+  if (selectedAnswer.localeCompare(quizData[currentQuestionindex].correct) != 0) {
+    // console.log(selectedAnswer, quizData[currentQuestionindex].correct);
+    timerCount -= 10;
+  }
+  if (selected) {
+    if (currentQuestionindex < quizData.length -1) {
+      currentQuestionindex++;
+      loadQuiz();
+    }
+    else {
+      highScore();
+    }
+  }
+ 
+}
 
 
-// function intro() {
-//     const currentQuizData = quizData[currentQuiz];
-
-//     questionEl.innerText = currentQuizData.a;
-//     a.innerText = currentQuizData.a;
-//     b.innerText = currentQuizData.b;
-//     c.innerText = currentQuizData.c;
-//     d.innerText = currentQuizData.d;
-// }
-
-// startBtn.addEventListener("click", startTimer);
-// startBtn.addEventListener("click", questions);

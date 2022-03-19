@@ -32,20 +32,27 @@
       <div class="quiz-1 container">
         <ul>
           <li>
-            <button id="a" class="answer" name="answer">A</button>
+            <button data-answer="a" onclick="answers()" id="a" class="answer" name="answer">A</button>
           </li>
           <li>
-            <button id="b" class="answer" name="answer">B</button>
+            <button data-answer="b" onclick="answers()" id="b" class="answer" name="answer">B</button>
           </li>
           <li>
-            <button id="c" class="answer" name="answer">C</button>
+            <button data-answer="c" onclick="answers()" id="c" class="answer" name="answer">C</button>
           </li>
           <li>
-            <button id="d" class="answer" name="answer">D</button>
+            <button data-answer="d" onclick="answers()" id="d" class="answer" name="answer">D</button>
           </li>
-          <button id="submit" class="answer" name="submit">Submit</button>
+          <button onclick="nextQuestion()" id="submit" class="answer" name="submit">Submit</button>
         </ul>
       </div>
+    </div>
+    <div class="hide highscore">
+      <h2 class="h2highscore">
+        Your score is
+        <input placeholder="Initials here" type="text" name="highscore" id="initials">
+      </h2>
+      <button onclick="handleInitials()" id="submit" class="answer submit" name="submit">Submit</button>
     </div>
     <script src="./assets/js/script.js"></script>
   </body>
