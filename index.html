@@ -1,56 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, inital-scale=1.0" />
-        <title>Coding Quiz</title>
-        <link rel="stylesheet" href="./assets/css/style.css" />
-    </head>
-    <body>
-        <div class="quiz-1" id="quiz">
-            <div class="quiz-header">
-                <h2 id="question">Question text</h2>
-                <ul>
-                    <li>
-                        <input
-                            type="radio"
-                            id="a"
-                            name="answer"
-                            class="answer"
-                        />
-                        <label id="a_text" for="a">Question</label>
-                    </li>
-                    <li>
-                        <input
-                            type="radio"
-                            id="b"
-                            name="answer"
-                            class="answer"
-                        />
-                        <label id="b_text" for="b">Question</label>
-                    </li>
-                    <li>
-                        <input
-                            type="radio"
-                            id="c"
-                            name="answer"
-                            class="answer"
-                        />
-                        <label id="c_text" for="c">Question</label>
-                    </li>
-                    <li>
-                        <input
-                            type="radio"
-                            id="d"
-                            name="answer"
-                            class="answer"
-                        />
-                        <label id="d_text" for="d">Question</label>
-                    </li>
-                </ul>
-            </div>
-            <button id="submit">Submit</button>
-        </div>
-        <script src="/assets/js/script.js"></script>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, inital-scale=1.0" />
+    <title>Coding Quiz</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h2 id="view_highscore_link">View Highscores</h2>
+      <div class="timer">
+        <p>
+          Time:
+          <span id="time">0</span>
+        </p>
+      </div>
+    </header>
+
+    <div class="intro" id="start-page">
+      <h1>Coding Quiz</h1>
+      <p>
+        Try to answer the following code-related questions withing the time
+        limit. The incorrect answers will penalize you score/time by ten
+        seconds.
+      </p>
+      <button onclick="startQuiz(); questions(); intro(); loadQuiz()" id="start">Start Quiz</button>
+    </div>
+
+    <div class="quiz container hide" id="quiz">
+      <h2 id="questions">question</h2>
+      <div class="quiz-1 container">
+        <ul>
+          <li>
+            <button id="a" class="answer" name="answer">A</button>
+          </li>
+          <li>
+            <button id="b" class="answer" name="answer">B</button>
+          </li>
+          <li>
+            <button id="c" class="answer" name="answer">C</button>
+          </li>
+          <li>
+            <button id="d" class="answer" name="answer">D</button>
+          </li>
+          <button id="submit" class="answer" name="submit">Submit</button>
+        </ul>
+      </div>
+    </div>
+    <script src="./assets/js/script.js"></script>
+  </body>
 </html>
