@@ -63,6 +63,7 @@ var selected = false;
 var selectedAnswer = "";
 var initials = document.getElementById('initials');
 var submitScoreBtn = document.getElementsByClassName('submit');
+var leaderBoard = document.getElementsByClassName('highscorelist');
 
 
 var currentQuestionindex = 0;
@@ -112,21 +113,23 @@ function startQuiz() {
     startTimer();
 }
 
-submitScoreBtn.addEventListener("click", function saveScores() {
-  if (initials.value === "") {
-    alert("Initials cannot be blank!");
-    return false;
-  } else {
-    var savedScores = JSON.parse(localStorage.getItem("savedScores")) || [];
-    var currentPlayer = initials.value.trim();
-    var currentHighscore = {
-      name : currentPlayer,
-      score : score
-    };
 
-  }
-});
+// submitScoreBtn.addEventListener("click", function saveScores() {
+//   if (initials.value === "") {
+//     alert("Initials cannot be blank!");
+//     return false;
+//   } else {
+//     var savedScores = JSON.parse(localStorage.getItem("savedScores")) || [];
+//     var currentPlayer = initials.value.trim();
+//     var currentHighscore = {
+//       name : currentPlayer,
+//       score : score
+//     };
 
+//   }
+// });
+
+// loading the quiz
 function loadQuiz() {
     var currentQuestion = quizData[currentQuestionindex];
     questionEl.textContent = currentQuestion.question;
@@ -152,6 +155,7 @@ function answers() {
   selected = true;
 }
 
+// clicking to the next question
 function nextQuestion() {
   if (selectedAnswer.localeCompare(quizData[currentQuestionindex].correct) != 0) {
     // console.log(selectedAnswer, quizData[currentQuestionindex].correct);
