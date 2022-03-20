@@ -8,7 +8,7 @@ This is my coding quiz. It is 5 questions long the subjects for the question are
 ## Installation
 
 Click on the following link to visit.
-
+https://deank24.github.io/Code-quiz/
 
 ## Usage
 
