@@ -1,5 +1,5 @@
 # Code-quiz
-# <Dean-Ketchamrk's-Portfolio>
+# <Dean-Ketchamrk's-Coding-Quiz>
 
 ## Description
 This is my coding quiz. It is 5 questions long the subjects for the question are HTML, CSS, and Javascript related. The quiz has a timer on it and also everytime you get a question wrong 10 seconds will deduct from the time to take the quiz. After the quiz you can submit your initials and save you score.
